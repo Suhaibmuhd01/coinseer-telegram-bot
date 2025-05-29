@@ -1,53 +1,42 @@
-<<<<<<< HEAD
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+import logging
+from telegram.ext import (
+    Application,
+    CommandHandler,
+    MessageHandler,
+    filters,
+    CallbackQueryHandler,
+    ConversationHandler,
+)
+import bot_handlers
+import database as db
+from config import TELEGRAM_BOT_TOKEN
+from scheduler import setup_scheduler
 
-# Other files and folders
-.settings/
+# Enable logging
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+# For more detailed APScheduler logs (optional)
+# logging.getLogger('apscheduler').setLevel(logging.DEBUG)
+logger = logging.getLogger(__name__)
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
-=======
-venv/
-*.pyc
-__pycache__/
-.env
-coinseer_bot.db
-.env
-
-
-   """ def main() -> None:
-     """Start the bot."""
+def main() -> None:
+    """Start the bot."""
     # Initialize database
     db.init_db()
 
+    # Create the Application and pass it your bot's token.
     if not TELEGRAM_BOT_TOKEN:
         logger.critical("TELEGRAM_BOT_TOKEN not found in environment variables. Bot cannot start.")
         return
 
-    scheduler = setup_scheduler()
-
-    async def on_startup(app):
-        scheduler.start()
-        logger.info("APScheduler started.")
-
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).post_init(on_startup).build()
+    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
     # --- Conversation Handler for Price Alerts ---
     alert_conv_handler = ConversationHandler(
         entry_points=[
             CommandHandler("alert", bot_handlers.alert_command_start),
-            CallbackQueryHandler(bot_handlers.alert_command_start, pattern="^alert_start$")
+            CallbackQueryHandler(bot_handlers.alert_command_start, pattern="^alert_start$") # From inline button
         ],
         states={
             bot_handlers.COIN_FOR_ALERT: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot_handlers.alert_coin_received)],
@@ -63,13 +52,34 @@ coinseer_bot.db
     application.add_handler(CommandHandler("price", bot_handlers.price_command))
     application.add_handler(CommandHandler("news", bot_handlers.news_command))
     application.add_handler(CommandHandler("fear_greed", bot_handlers.fear_greed_command))
+
     application.add_handler(CommandHandler("watchlist_add", bot_handlers.watchlist_add_command))
     application.add_handler(CommandHandler("watchlist_remove", bot_handlers.watchlist_remove_command))
     application.add_handler(CommandHandler("watchlist", bot_handlers.watchlist_command))
-    application.add_handler(alert_conv_handler)
+
+    application.add_handler(alert_conv_handler) # Add the conversation handler
     application.add_handler(CommandHandler("my_alerts", bot_handlers.my_alerts_command))
+
+    # Handler for inline button presses not part of a conversation
     application.add_handler(CallbackQueryHandler(bot_handlers.button_callback_handler))
 
+    # Start the scheduler
+    scheduler = setup_scheduler()
+    
+    # edited section
+    # 
+    #
+    
+    """   scheduler.start()
+    logger.info("APScheduler started.")
+
+    # Run the bot until the user presses Ctrl-C
     logger.info("Bot is starting...")
-    application.run_polling() """
->>>>>>> 65577ee (Initial commit)
+    application.run_polling()
+
+    # Cleanly shut down the scheduler when the application is stopped
+    scheduler.shutdown()
+    logger.info("APScheduler shut down.") """
+
+if __name__ == "__main__":
+    main()

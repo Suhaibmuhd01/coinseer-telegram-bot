@@ -1,0 +1,6 @@
+python-telegram-bot
+requests
+aiohttp
+APScheduler
+python-dotenv
+pycoingecko

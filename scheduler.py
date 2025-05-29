@@ -35,7 +35,7 @@ async def check_price_alerts():
            # preferred_fiat = alert.get('preferred_fiat', DEFAULT_FIAT) # Get user's preferred fiat
            preferred_fiat = alert['preferred_fiat'] if 'preferred_fiat' in alert.keys() else DEFAULT_FIAT
 
-            current_price_data = await api_clients.get_crypto_price(coin_id, preferred_fiat)
+             current_price_data = await api_clients.get_crypto_price(coin_id, preferred_fiat)
 
             if current_price_data and preferred_fiat in current_price_data:
                 current_price = current_price_data[preferred_fiat]

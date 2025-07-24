@@ -4,6 +4,8 @@ from telegram.ext import ContextTypes, ConversationHandler
 from telegram.constants import ParseMode
 import database as db
 import api_clients
+from utils import get_coingecko_id, get_display_symbol, format_currency, format_percentage, sanitize_input
+from datetime import datetime
 from config import DEFAULT_FIAT, NEWS_SOURCES
 
 logger = logging.getLogger(__name__)
@@ -106,6 +108,10 @@ async def news_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(message, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     else:
         await update.message.reply_text(f"Sorry, I couldn't find any recent news for '{query}'.")
+# handle slash
+async def handle_slash(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.message.text.strip() == '/':
+        await help_command(update, context)
 
 async def fear_greed_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("⏳ Fetching Fear & Greed Index...")

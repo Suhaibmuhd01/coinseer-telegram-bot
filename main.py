@@ -14,10 +14,13 @@ from scheduler import setup_scheduler
 
 # Enable logging
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+    handlers=[
+        logging.FileHandler('coinseer_bot.log'),
+        logging.StreamHandler()
+    ]
 )
-# For more detailed APScheduler logs (optional)
-# logging.getLogger('apscheduler').setLevel(logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 def main() -> None:
@@ -25,18 +28,19 @@ def main() -> None:
     # Initialize database
     db.init_db()
 
-    # Create the Application and pass it your bot's token.
+    # Validate bot token
     if not TELEGRAM_BOT_TOKEN:
         logger.critical("TELEGRAM_BOT_TOKEN not found in environment variables. Bot cannot start.")
         return
 
+    # Create the Application
     application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
-    # --- Conversation Handler for Price Alerts ---
+    # Conversation Handler for Price Alerts
     alert_conv_handler = ConversationHandler(
         entry_points=[
             CommandHandler("alert", bot_handlers.alert_command_start),
-            CallbackQueryHandler(bot_handlers.alert_command_start, pattern="^alert_start$") # From inline button
+            CallbackQueryHandler(bot_handlers.alert_command_start, pattern="^alert_start$")
         ],
         states={
             bot_handlers.COIN_FOR_ALERT: [MessageHandler(filters.TEXT & ~filters.COMMAND, bot_handlers.alert_coin_received)],
@@ -46,40 +50,41 @@ def main() -> None:
         fallbacks=[CommandHandler("cancel", bot_handlers.alert_cancel)],
     )
 
-    # --- Register handlers ---
+    # Register handlers
     application.add_handler(CommandHandler("start", bot_handlers.start_command))
     application.add_handler(CommandHandler("help", bot_handlers.help_command))
+    application.add_handler(MessageHandler(filters.Regex('^/$'), bot_handlers.handle_slash))
     application.add_handler(CommandHandler("price", bot_handlers.price_command))
+    application.add_handler(CommandHandler("chart", bot_handlers.chart_command))
     application.add_handler(CommandHandler("news", bot_handlers.news_command))
     application.add_handler(CommandHandler("fear_greed", bot_handlers.fear_greed_command))
-
     application.add_handler(CommandHandler("watchlist_add", bot_handlers.watchlist_add_command))
     application.add_handler(CommandHandler("watchlist_remove", bot_handlers.watchlist_remove_command))
     application.add_handler(CommandHandler("watchlist", bot_handlers.watchlist_command))
-
-    application.add_handler(alert_conv_handler) # Add the conversation handler
+    application.add_handler(CommandHandler("portfolio_add", bot_handlers.portfolio_add_command))
+    application.add_handler(CommandHandler("portfolio_remove", bot_handlers.portfolio_remove_command))
+    application.add_handler(CommandHandler("portfolio", bot_handlers.portfolio_command))
+    application.add_handler(CommandHandler("market", bot_handlers.market_command))
+    application.add_handler(CommandHandler("topmovers", bot_handlers.topmovers_command))
+    application.add_handler(CommandHandler("predict", bot_handlers.predict_command))
+    application.add_handler(CommandHandler("settings", bot_handlers.settings_command))
     application.add_handler(CommandHandler("my_alerts", bot_handlers.my_alerts_command))
-
-    # Handler for inline button presses not part of a conversation
+    application.add_handler(CommandHandler("delete_alert", bot_handlers.delete_alert_command))
+    application.add_handler(alert_conv_handler)
     application.add_handler(CallbackQueryHandler(bot_handlers.button_callback_handler))
 
     # Start the scheduler
     scheduler = setup_scheduler()
-    
-    # edited section
-    # 
-    #
-    
-    """   scheduler.start()
+    scheduler.start()
     logger.info("APScheduler started.")
 
-    # Run the bot until the user presses Ctrl-C
+    # Run the bot
     logger.info("Bot is starting...")
-    application.run_polling()
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
 
-    # Cleanly shut down the scheduler when the application is stopped
+    # Cleanly shut down the scheduler
     scheduler.shutdown()
-    logger.info("APScheduler shut down.") """
+    logger.info("APScheduler shut down.")
 
 if __name__ == "__main__":
     main()

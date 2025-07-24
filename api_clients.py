@@ -1,6 +1,7 @@
 import logging
 import asyncio
 import aiohttp
+import time
 from pycoingecko import CoinGeckoAPI
 from config import NEWS_API_KEY, DEFAULT_FIAT, SUPPORTED_FIAT
 from utils import get_coingecko_id
@@ -8,9 +9,29 @@ from utils import get_coingecko_id
 logger = logging.getLogger(__name__)
 cg = CoinGeckoAPI()
 
+# Rate limiting
+last_api_call = {}
+API_RATE_LIMIT = 1.0  # seconds between calls
+
+async def rate_limit_check(api_name: str):
+    """Simple rate limiting to avoid API abuse."""
+    current_time = time.time()
+    if api_name in last_api_call:
+        time_diff = current_time - last_api_call[api_name]
+        if time_diff < API_RATE_LIMIT:
+            await asyncio.sleep(API_RATE_LIMIT - time_diff)
+    last_api_call[api_name] = time.time()
+
 async def get_crypto_price(coin_id: str, vs_currency: str = DEFAULT_FIAT):
     """Fetch crypto price from CoinGecko with retry logic."""
+    await rate_limit_check("coingecko_price")
     cg_coin_id = get_coingecko_id(coin_id)
+    
+    # Handle multiple coins
+    if ',' in coin_id:
+        coin_ids = [get_coingecko_id(c.strip()) for c in coin_id.split(',')]
+        cg_coin_id = ','.join(coin_ids)
+    
     for attempt in range(3):
         try:
             price_data = cg.get_price(
@@ -20,8 +41,11 @@ async def get_crypto_price(coin_id: str, vs_currency: str = DEFAULT_FIAT):
                 include_24hr_vol='true',
                 include_24hr_change='true'
             )
-            if price_data and cg_coin_id in price_data:
-                return price_data[cg_coin_id]
+            if price_data:
+                if ',' in cg_coin_id:
+                    return price_data
+                elif cg_coin_id in price_data:
+                    return price_data[cg_coin_id]
             return None
         except Exception as e:
             logger.warning(f"CoinGecko API error for {cg_coin_id}, attempt {attempt+1}: {e}")
@@ -33,6 +57,7 @@ async def get_crypto_price(coin_id: str, vs_currency: str = DEFAULT_FIAT):
 
 async def get_coin_details(coin_id: str):
     """Fetch detailed coin information from CoinGecko."""
+    await rate_limit_check("coingecko_details")
     cg_coin_id = get_coingecko_id(coin_id)
     try:
         data = cg.get_coin_by_id(
@@ -51,13 +76,14 @@ async def get_coin_details(coin_id: str):
 
 async def get_market_chart(coin_id: str, vs_currency: str = DEFAULT_FIAT, days: int = 7):
     """Fetch market chart data for a coin."""
+    await rate_limit_check("coingecko_chart")
     cg_coin_id = get_coingecko_id(coin_id)
     try:
         chart_data = cg.get_coin_market_chart_by_id(
             id=cg_coin_id,
             vs_currency=vs_currency,
             days=days,
-            interval='daily'
+            interval='daily' if days > 1 else 'hourly'
         )
         return chart_data
     except Exception as e:
@@ -66,14 +92,20 @@ async def get_market_chart(coin_id: str, vs_currency: str = DEFAULT_FIAT, days: 
 
 async def get_top_movers(vs_currency: str = DEFAULT_FIAT, limit: int = 5):
     """Fetch top gainers and losers."""
+    await rate_limit_check("coingecko_movers")
     try:
         data = cg.get_coins_markets(
             vs_currency=vs_currency,
-            order='percent_change_24h desc',
+            order='market_cap_desc',
             per_page=limit,
             page=1
+            price_change_percentage='24h'
         )
-        return data
+        if data:
+            # Sort by 24h change and return top gainers and losers
+            sorted_data = sorted(data, key=lambda x: x.get('price_change_percentage_24h', 0), reverse=True)
+            return sorted_data[:limit]
+        return []
     except Exception as e:
         logger.error(f"CoinGecko get_top_movers error: {e}")
         return []
@@ -90,10 +122,9 @@ async def get_crypto_news(query: str = "cryptocurrency", sources: str = None, pa
         "apiKey": NEWS_API_KEY,
         "pageSize": page_size,
         "sortBy": "publishedAt",
-        "language": "en"
+        "language": "en",
+        "domains": "coindesk.com,cointelegraph.com,decrypt.co,bitcoinmagazine.com,theblock.co"
     }
-    if sources:
-        params["sources"] = sources
 
     async with aiohttp.ClientSession() as session:
         for attempt in range(3):
@@ -101,7 +132,14 @@ async def get_crypto_news(query: str = "cryptocurrency", sources: str = None, pa
                 async with session.get(url, params=params) as response:
                     response.raise_for_status()
                     data = await response.json()
-                    return data.get("articles", [])
+                    articles = data.get("articles", [])
+                    # Filter out articles with missing content
+                    filtered_articles = [
+                        article for article in articles 
+                        if article.get('title') and article.get('url') and 
+                        article.get('title') != '[Removed]'
+                    ]
+                    return filtered_articles
             except aiohttp.ClientError as e:
                 logger.warning(f"NewsAPI request error, attempt {attempt+1}: {e}")
                 if attempt < 2:
@@ -109,6 +147,9 @@ async def get_crypto_news(query: str = "cryptocurrency", sources: str = None, pa
                 else:
                     logger.error(f"Failed to fetch news: {e}")
                     return []
+            except Exception as e:
+                logger.error(f"Unexpected error fetching news: {e}")
+                return []
 
 async def get_fear_greed_index():
     """Fetch Fear & Greed Index."""
@@ -129,6 +170,26 @@ async def get_fear_greed_index():
                 else:
                     logger.error(f"Failed to fetch Fear & Greed Index: {e}")
                     return None
+
+async def get_trending_coins():
+    """Fetch trending coins from CoinGecko."""
+    await rate_limit_check("coingecko_trending")
+    try:
+        data = cg.get_search_trending()
+        return data.get('coins', [])
+    except Exception as e:
+        logger.error(f"CoinGecko trending coins error: {e}")
+        return []
+
+async def get_global_market_data():
+    """Fetch global cryptocurrency market data."""
+    await rate_limit_check("coingecko_global")
+    try:
+        data = cg.get_global()
+        return data.get('data', {})
+    except Exception as e:
+        logger.error(f"CoinGecko global market data error: {e}")
+        return {}
 
 
 import logging

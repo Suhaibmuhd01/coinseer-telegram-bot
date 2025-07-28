@@ -7914,3 +7914,415 @@ Traceback (most recent call last):
     raise Conflict(message)
 telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 2025-07-28 13:52:01,830 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:52:12,067 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:52:22,305 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:52:25,582 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:52:25,606 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:52:28,324 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:53:28 UTC)" (scheduled at 2025-07-28 12:52:28.305486+00:00)
+2025-07-28 13:52:28,344 - apscheduler.executors.default - INFO - Job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:53:28 UTC)" executed successfully
+2025-07-28 13:52:29,890 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:52:29,898 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:52:36,998 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:52:46,148 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:53:46 UTC)" (scheduled at 2025-07-28 12:52:46.130707+00:00)
+2025-07-28 13:53:05,814 - database - INFO - Database initialized.
+2025-07-28 13:53:08,019 - __main__ - INFO - Bot is starting...
+2025-07-28 13:53:08,693 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getMe "HTTP/1.1 200 OK"
+2025-07-28 13:53:08,698 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-28 13:53:08,700 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-28 13:53:08,703 - scheduler - INFO - Scheduler setup complete. Price alerts: every 1 min, Volume alerts: every 5 min.
+2025-07-28 13:53:08,706 - apscheduler.scheduler - INFO - Added job "check_price_alerts" to job store "default"
+2025-07-28 13:53:08,708 - apscheduler.scheduler - INFO - Added job "check_volume_alerts" to job store "default"
+2025-07-28 13:53:08,710 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-28 13:53:08,712 - __main__ - INFO - APScheduler started (from post_init).
+2025-07-28 13:53:08,905 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-28 13:53:08,923 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-28 13:53:08,931 - telegram.ext.Application - INFO - Application started
+2025-07-28 13:53:09,603 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:53:09,607 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:53:19,607 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:53:28,320 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:54:28 UTC)" (scheduled at 2025-07-28 12:53:28.305486+00:00)
+2025-07-28 13:53:28,326 - apscheduler.executors.default - INFO - Job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:54:28 UTC)" executed successfully
+2025-07-28 13:53:28,328 - apscheduler.executors.default - INFO - Running job "check_volume_alerts (trigger: interval[0:05:00], next run at: 2025-07-28 12:58:28 UTC)" (scheduled at 2025-07-28 12:53:28.306482+00:00)
+2025-07-28 13:53:28,332 - apscheduler.executors.default - INFO - Job "check_volume_alerts (trigger: interval[0:05:00], next run at: 2025-07-28 12:58:28 UTC)" executed successfully
+2025-07-28 13:53:29,891 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:53:40,132 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:53:40,438 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:53:40,444 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:53:44,735 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:53:44,736 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:53:51,631 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:54:02,042 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:54:08,722 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:55:08 UTC)" (scheduled at 2025-07-28 12:54:08.697773+00:00)
+2025-07-28 13:54:08,730 - apscheduler.executors.default - INFO - Job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:55:08 UTC)" executed successfully
+2025-07-28 13:54:12,283 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:54:15,558 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:54:15,561 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:54:19,860 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:54:19,862 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:54:26,828 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:54:28,310 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:55:28 UTC)" (scheduled at 2025-07-28 12:54:28.305486+00:00)
+2025-07-28 13:54:28,316 - apscheduler.executors.default - INFO - Job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:55:28 UTC)" executed successfully
+2025-07-28 13:54:35,219 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:54:35,741 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-07-28 13:54:36,832 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_application.py", line 1298, in process_update
+    await coroutine
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_handlers\conversationhandler.py", line 842, in handle_update
+    new_state: object = await handler.handle_update(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_handlers\basehandler.py", line 158, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\bot_handlers.py", line 523, in alert_coin_received
+    await update.message.reply_text(message, parse_mode=ParseMode.MARKDOWN)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'reply_text'
+2025-07-28 13:54:45,415 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:54:50,517 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:54:50,556 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:54:54,788 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:54:54,793 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:55:01,843 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:55:08,704 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:56:08 UTC)" (scheduled at 2025-07-28 12:55:08.697773+00:00)
+2025-07-28 13:55:08,714 - apscheduler.executors.default - INFO - Job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:56:08 UTC)" executed successfully
+2025-07-28 13:55:12,086 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:55:22,294 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:55:25,600 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:55:25,605 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:55:28,326 - apscheduler.executors.default - INFO - Running job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:56:28 UTC)" (scheduled at 2025-07-28 12:55:28.305486+00:00)
+2025-07-28 13:55:28,331 - apscheduler.executors.default - INFO - Job "check_price_alerts (trigger: interval[0:01:00], next run at: 2025-07-28 12:56:28 UTC)" executed successfully
+2025-07-28 13:55:29,903 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-28 13:55:29,908 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Documents\CoinSeer\venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-28 13:55:36,965 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"
+2025-07-28 13:55:47,309 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7509807012:AAFn0026Mstf8DXx1HICJu36WhgkOWmIDP4/getUpdates "HTTP/1.1 200 OK"

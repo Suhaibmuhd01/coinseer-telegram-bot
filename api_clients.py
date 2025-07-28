@@ -98,7 +98,7 @@ async def get_top_movers(vs_currency: str = DEFAULT_FIAT, limit: int = 5):
             vs_currency=vs_currency,
             order='market_cap_desc',
             per_page=limit,
-            page=1
+            page=1,
             price_change_percentage='24h'
         )
         if data:

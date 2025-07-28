@@ -7,14 +7,13 @@ from telegram.ext import (
     filters,
     CallbackQueryHandler,
     ConversationHandler,
+    ContextTypes,
 )
 import bot_handlers
 import database as db
 from config import TELEGRAM_BOT_TOKEN
 from scheduler import setup_scheduler
-import asyncio
 
-# Enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
@@ -25,7 +24,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def main() -> None:
+scheduler = None  # Global variable to hold the scheduler instance
+
+async def post_init(application):
+    global scheduler
+    scheduler = setup_scheduler()
+    scheduler.start()
+    logger.info("APScheduler started (from post_init).")
+
+async def button_callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info(f"Callback data: {update.callback_query.data}")
+    # ... rest of your logic ...
+
+def main():
     """Start the bot."""
     # Initialize database
     db.init_db()
@@ -36,7 +47,7 @@ def main() -> None:
         return
 
     # Create the Application
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+    application = Application.builder().token(TELEGRAM_BOT_TOKEN).post_init(post_init).build()
 
     # Conversation Handler for Price Alerts
     alert_conv_handler = ConversationHandler(
@@ -93,22 +104,13 @@ def main() -> None:
     application.add_handler(settings_conv_handler)
     application.add_handler(CallbackQueryHandler(bot_handlers.button_callback_handler))
 
-    # Start the scheduler
-    scheduler = setup_scheduler()
-    scheduler.start()
-    logger.info("APScheduler started.")
-
-    # Run the bot
+    # Run the bot (do NOT use asyncio.run!)
     logger.info("Bot is starting...")
     try:
         application.run_polling(allowed_updates=Update.ALL_TYPES)
     except Exception as e:
         logger.critical(f"Bot crashed: {e}")
         raise
-
-    # Cleanly shut down the scheduler
-    scheduler.shutdown()
-    logger.info("APScheduler shut down.")
 
 if __name__ == "__main__":
     main()

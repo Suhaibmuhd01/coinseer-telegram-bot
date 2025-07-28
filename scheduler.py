@@ -174,3 +174,5 @@ def setup_scheduler():
     
     logger.info("Scheduler setup complete. Price alerts: every 1 min, Volume alerts: every 5 min.")
     return scheduler
+
+scheduler = setup_scheduler()

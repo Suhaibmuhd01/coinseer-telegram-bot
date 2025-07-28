@@ -1566,7 +1566,9 @@ async def button_callback_handler(update: Update, context: ContextTypes.DEFAULT_
             await query.edit_message_text(f"🔄 Processing: {data}")
             
     except Exception as e:
-        logger.error(f"Error in button_callback_handler for {data}: {e}")
+   #     logger.error(f"Error in button_callback_handler for {data}: {e}")
+        logger.exception("Error in button_callback_handler")  # This logs the full traceback!
+        await update.callback_query.answer("❌ An error occurred. Please try again.", show_alert=True)
         try:
             await query.edit_message_text("❌ An error occurred. Please try again.")
         except:

@@ -813,45 +813,255 @@
     </section>
 
     <!-- ==================================================== -->
-    <!-- TAB 4: Instant Crypto Swap / Rate Converter -->
+    <!-- TAB 4: Instant 100+ Crypto, Memecoin & Fiat Converter -->
     <!-- ==================================================== -->
     <section id="tab-swap" style="display: none;">
         <div class="glass-card">
-            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 14px;">Instant Crypto Value Converter</h3>
+            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                <svg class="icon-svg" style="fill: var(--accent-cyan);" viewBox="0 0 24 24"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
+                Instant Web3 Rate & Swap Oracle (100+ Assets)
+            </h3>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 14px;">
+                Convert instantaneously between major layer-1s, stablecoins, trending memecoins, and global fiats.
+            </p>
             
             <div class="input-group">
-                <label>From Asset</label>
-                <div style="display: grid; grid-template-columns: 1fr 100px; gap: 8px;">
-                    <input type="number" class="glass-input mono" id="convertAmount" value="1" oninput="calculateConversion()">
+                <label>From Asset (Amount)</label>
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 8px;">
+                    <input type="number" step="any" class="glass-input mono" id="convertAmount" value="1" oninput="calculateConversion()">
                     <select class="glass-input" id="convertFromToken" onchange="calculateConversion()">
-                        <option value="bitcoin">BTC</option>
-                        <option value="ethereum">ETH</option>
-                        <option value="solana" selected>SOL</option>
-                        <option value="binancecoin">BNB</option>
+                        <optgroup label="🔥 Top Cryptocurrencies">
+                            <option value="bitcoin" selected>Bitcoin (BTC)</option>
+                            <option value="ethereum">Ethereum (ETH)</option>
+                            <option value="solana">Solana (SOL)</option>
+                            <option value="binancecoin">BNB (BNB)</option>
+                            <option value="the-open-network">Toncoin (TON)</option>
+                            <option value="ripple">XRP (XRP)</option>
+                            <option value="cardano">Cardano (ADA)</option>
+                            <option value="avalanche-2">Avalanche (AVAX)</option>
+                            <option value="sui">Sui (SUI)</option>
+                            <option value="near">NEAR (NEAR)</option>
+                            <option value="polkadot">Polkadot (DOT)</option>
+                            <option value="chainlink">Chainlink (LINK)</option>
+                            <option value="aptos">Aptos (APT)</option>
+                            <option value="matic-network">Polygon (POL)</option>
+                            <option value="tron">TRON (TRX)</option>
+                            <option value="bitcoin-cash">Bitcoin Cash (BCH)</option>
+                            <option value="litecoin">Litecoin (LTC)</option>
+                            <option value="internet-computer">ICP (ICP)</option>
+                            <option value="uniswap">Uniswap (UNI)</option>
+                            <option value="cosmos">Cosmos (ATOM)</option>
+                            <option value="monero">Monero (XMR)</option>
+                            <option value="kaspa">Kaspa (KAS)</option>
+                            <option value="fantom">Fantom (FTM)</option>
+                            <option value="stellar">Stellar (XLM)</option>
+                            <option value="hedera-hashgraph">Hedera (HBAR)</option>
+                            <option value="filecoin">Filecoin (FIL)</option>
+                            <option value="bittensor">Bittensor (TAO)</option>
+                            <option value="render-token">Render (RENDER)</option>
+                            <option value="injective-protocol">Injective (INJ)</option>
+                            <option value="blockstack">Stacks (STX)</option>
+                            <option value="celestia">Celestia (TIA)</option>
+                            <option value="arbitrum">Arbitrum (ARB)</option>
+                            <option value="optimism">Optimism (OP)</option>
+                            <option value="starknet">Starknet (STRK)</option>
+                            <option value="sei-network">Sei (SEI)</option>
+                            <option value="algorand">Algorand (ALGO)</option>
+                            <option value="quant-network">Quant (QNT)</option>
+                            <option value="crypto-com-chain">Cronos (CRO)</option>
+                            <option value="immutable-x">Immutable (IMX)</option>
+                            <option value="maker">Maker (MKR)</option>
+                            <option value="aave">Aave (AAVE)</option>
+                            <option value="lido-dao">Lido (LDO)</option>
+                            <option value="jupiter-exchange-solana">Jupiter (JUP)</option>
+                            <option value="raydium">Raydium (RAY)</option>
+                            <option value="pendle">Pendle (PENDLE)</option>
+                            <option value="ethena">Ethena (ENA)</option>
+                            <option value="pyth-network">Pyth (PYTH)</option>
+                            <option value="worldcoin-wld">Worldcoin (WLD)</option>
+                            <option value="arweave">Arweave (AR)</option>
+                            <option value="thorchain">THORChain (RUNE)</option>
+                            <option value="fetch-ai">Fetch.ai (FET)</option>
+                        </optgroup>
+                        <optgroup label="💵 Stablecoins">
+                            <option value="tether">Tether (USDT)</option>
+                            <option value="usd-coin">USD Coin (USDC)</option>
+                            <option value="dai">Dai (DAI)</option>
+                            <option value="first-digital-usd">First Digital USD (FDUSD)</option>
+                            <option value="ethena-usde">Ethena USDe (USDE)</option>
+                            <option value="true-usd">TrueUSD (TUSD)</option>
+                            <option value="usdd">USDD (USDD)</option>
+                            <option value="paypal-usd">PayPal USD (PYUSD)</option>
+                            <option value="frax">Frax (FRAX)</option>
+                            <option value="tether-gold">Tether Gold (XAUT)</option>
+                            <option value="pax-gold">PAX Gold (PAXG)</option>
+                        </optgroup>
+                        <optgroup label="🐕 Top Memecoins">
+                            <option value="dogecoin">Dogecoin (DOGE)</option>
+                            <option value="shiba-inu">Shiba Inu (SHIB)</option>
+                            <option value="pepe">Pepe (PEPE)</option>
+                            <option value="dogwifcoin">dogwifhat (WIF)</option>
+                            <option value="bonk">Bonk (BONK)</option>
+                            <option value="floki">Floki (FLOKI)</option>
+                            <option value="brett">Brett (BRETT)</option>
+                            <option value="popcat">Popcat (POPCAT)</option>
+                            <option value="book-of-meme">Book of Meme (BOME)</option>
+                            <option value="cat-in-a-dogs-world">Cat in Dogs World (MEW)</option>
+                            <option value="neiro-on-eth">Neiro (NEIRO)</option>
+                            <option value="baby-doge-coin">Baby Doge (BABYDOGE)</option>
+                            <option value="mog-coin">Mog Coin (MOG)</option>
+                            <option value="turbo">Turbo (TURBO)</option>
+                            <option value="goatseus-maximus">Goatseus (GOAT)</option>
+                            <option value="dogs-2">Dogs (DOGS)</option>
+                            <option value="notcoin">Notcoin (NOT)</option>
+                            <option value="ponke">Ponke (PONKE)</option>
+                            <option value="gigachad">Gigachad (GIGA)</option>
+                            <option value="simons-cat">Simon's Cat (CAT)</option>
+                        </optgroup>
+                        <optgroup label="🌍 Global Fiat Currencies">
+                            <option value="fiat_usd">US Dollar (USD $)</option>
+                            <option value="fiat_eur">Euro (EUR €)</option>
+                            <option value="fiat_gbp">British Pound (GBP £)</option>
+                            <option value="fiat_jpy">Japanese Yen (JPY ¥)</option>
+                            <option value="fiat_cad">Canadian Dollar (CAD $)</option>
+                            <option value="fiat_aud">Australian Dollar (AUD $)</option>
+                            <option value="fiat_chf">Swiss Franc (CHF)</option>
+                            <option value="fiat_cny">Chinese Yuan (CNY ¥)</option>
+                            <option value="fiat_ngn">Nigerian Naira (NGN ₦)</option>
+                            <option value="fiat_inr">Indian Rupee (INR ₹)</option>
+                            <option value="fiat_brl">Brazilian Real (BRL R$)</option>
+                            <option value="fiat_aed">UAE Dirham (AED)</option>
+                            <option value="fiat_sgd">Singapore Dollar (SGD $)</option>
+                            <option value="fiat_try">Turkish Lira (TRY ₺)</option>
+                            <option value="fiat_zar">South African Rand (ZAR R)</option>
+                        </optgroup>
                     </select>
                 </div>
             </div>
 
-            <div style="text-align: center; margin: 4px 0;">
-                <svg class="icon-svg" style="fill: var(--accent-cyan); width: 20px; height: 20px;" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
+            <div style="text-align: center; margin: 6px 0;">
+                <button type="button" onclick="swapConverterPairs()" style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--border-highlight); color: var(--accent-cyan); border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+                    <svg class="icon-svg" style="width: 16px; height: 16px;" viewBox="0 0 24 24"><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"/></svg>
+                </button>
             </div>
 
             <div class="input-group">
-                <label>To (Estimated Value)</label>
-                <div style="display: grid; grid-template-columns: 1fr 100px; gap: 8px;">
-                    <input type="text" class="glass-input mono" id="convertResult" readonly value="$158.20">
+                <label>To Target Asset (Estimated Total)</label>
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 8px;">
+                    <input type="text" class="glass-input mono" id="convertResult" readonly value="$68,420.00">
                     <select class="glass-input" id="convertToToken" onchange="calculateConversion()">
-                        <option value="usd" selected>USD ($)</option>
-                        <option value="bitcoin">BTC</option>
-                        <option value="ethereum">ETH</option>
-                        <option value="usdt">USDT</option>
+                        <optgroup label="🌍 Global Fiat Currencies">
+                            <option value="fiat_usd" selected>US Dollar (USD $)</option>
+                            <option value="fiat_eur">Euro (EUR €)</option>
+                            <option value="fiat_gbp">British Pound (GBP £)</option>
+                            <option value="fiat_jpy">Japanese Yen (JPY ¥)</option>
+                            <option value="fiat_cad">Canadian Dollar (CAD $)</option>
+                            <option value="fiat_aud">Australian Dollar (AUD $)</option>
+                            <option value="fiat_chf">Swiss Franc (CHF)</option>
+                            <option value="fiat_cny">Chinese Yuan (CNY ¥)</option>
+                            <option value="fiat_ngn">Nigerian Naira (NGN ₦)</option>
+                            <option value="fiat_inr">Indian Rupee (INR ₹)</option>
+                            <option value="fiat_brl">Brazilian Real (BRL R$)</option>
+                            <option value="fiat_aed">UAE Dirham (AED)</option>
+                            <option value="fiat_sgd">Singapore Dollar (SGD $)</option>
+                            <option value="fiat_try">Turkish Lira (TRY ₺)</option>
+                            <option value="fiat_zar">South African Rand (ZAR R)</option>
+                        </optgroup>
+                        <optgroup label="💵 Stablecoins">
+                            <option value="tether">Tether (USDT)</option>
+                            <option value="usd-coin">USD Coin (USDC)</option>
+                            <option value="dai">Dai (DAI)</option>
+                            <option value="first-digital-usd">First Digital USD (FDUSD)</option>
+                            <option value="ethena-usde">Ethena USDe (USDE)</option>
+                            <option value="true-usd">TrueUSD (TUSD)</option>
+                            <option value="usdd">USDD (USDD)</option>
+                            <option value="paypal-usd">PayPal USD (PYUSD)</option>
+                            <option value="frax">Frax (FRAX)</option>
+                            <option value="tether-gold">Tether Gold (XAUT)</option>
+                            <option value="pax-gold">PAX Gold (PAXG)</option>
+                        </optgroup>
+                        <optgroup label="🔥 Top Cryptocurrencies">
+                            <option value="bitcoin">Bitcoin (BTC)</option>
+                            <option value="ethereum">Ethereum (ETH)</option>
+                            <option value="solana">Solana (SOL)</option>
+                            <option value="binancecoin">BNB (BNB)</option>
+                            <option value="the-open-network">Toncoin (TON)</option>
+                            <option value="ripple">XRP (XRP)</option>
+                            <option value="cardano">Cardano (ADA)</option>
+                            <option value="avalanche-2">Avalanche (AVAX)</option>
+                            <option value="sui">Sui (SUI)</option>
+                            <option value="near">NEAR (NEAR)</option>
+                            <option value="polkadot">Polkadot (DOT)</option>
+                            <option value="chainlink">Chainlink (LINK)</option>
+                            <option value="aptos">Aptos (APT)</option>
+                            <option value="matic-network">Polygon (POL)</option>
+                            <option value="tron">TRON (TRX)</option>
+                            <option value="bitcoin-cash">Bitcoin Cash (BCH)</option>
+                            <option value="litecoin">Litecoin (LTC)</option>
+                            <option value="internet-computer">ICP (ICP)</option>
+                            <option value="uniswap">Uniswap (UNI)</option>
+                            <option value="cosmos">Cosmos (ATOM)</option>
+                            <option value="monero">Monero (XMR)</option>
+                            <option value="kaspa">Kaspa (KAS)</option>
+                            <option value="fantom">Fantom (FTM)</option>
+                            <option value="stellar">Stellar (XLM)</option>
+                            <option value="hedera-hashgraph">Hedera (HBAR)</option>
+                            <option value="filecoin">Filecoin (FIL)</option>
+                            <option value="bittensor">Bittensor (TAO)</option>
+                            <option value="render-token">Render (RENDER)</option>
+                            <option value="injective-protocol">Injective (INJ)</option>
+                            <option value="blockstack">Stacks (STX)</option>
+                            <option value="celestia">Celestia (TIA)</option>
+                            <option value="arbitrum">Arbitrum (ARB)</option>
+                            <option value="optimism">Optimism (OP)</option>
+                            <option value="starknet">Starknet (STRK)</option>
+                            <option value="sei-network">Sei (SEI)</option>
+                            <option value="algorand">Algorand (ALGO)</option>
+                            <option value="quant-network">Quant (QNT)</option>
+                            <option value="crypto-com-chain">Cronos (CRO)</option>
+                            <option value="immutable-x">Immutable (IMX)</option>
+                            <option value="maker">Maker (MKR)</option>
+                            <option value="aave">Aave (AAVE)</option>
+                            <option value="lido-dao">Lido (LDO)</option>
+                            <option value="jupiter-exchange-solana">Jupiter (JUP)</option>
+                            <option value="raydium">Raydium (RAY)</option>
+                            <option value="pendle">Pendle (PENDLE)</option>
+                            <option value="ethena">Ethena (ENA)</option>
+                            <option value="pyth-network">Pyth (PYTH)</option>
+                            <option value="worldcoin-wld">Worldcoin (WLD)</option>
+                            <option value="arweave">Arweave (AR)</option>
+                            <option value="thorchain">THORChain (RUNE)</option>
+                            <option value="fetch-ai">Fetch.ai (FET)</option>
+                        </optgroup>
+                        <optgroup label="🐕 Top Memecoins">
+                            <option value="dogecoin">Dogecoin (DOGE)</option>
+                            <option value="shiba-inu">Shiba Inu (SHIB)</option>
+                            <option value="pepe">Pepe (PEPE)</option>
+                            <option value="dogwifcoin">dogwifhat (WIF)</option>
+                            <option value="bonk">Bonk (BONK)</option>
+                            <option value="floki">Floki (FLOKI)</option>
+                            <option value="brett">Brett (BRETT)</option>
+                            <option value="popcat">Popcat (POPCAT)</option>
+                            <option value="book-of-meme">Book of Meme (BOME)</option>
+                            <option value="cat-in-a-dogs-world">Cat in Dogs World (MEW)</option>
+                            <option value="neiro-on-eth">Neiro (NEIRO)</option>
+                            <option value="baby-doge-coin">Baby Doge (BABYDOGE)</option>
+                            <option value="mog-coin">Mog Coin (MOG)</option>
+                            <option value="turbo">Turbo (TURBO)</option>
+                            <option value="goatseus-maximus">Goatseus (GOAT)</option>
+                            <option value="dogs-2">Dogs (DOGS)</option>
+                            <option value="notcoin">Notcoin (NOT)</option>
+                            <option value="ponke">Ponke (PONKE)</option>
+                            <option value="gigachad">Gigachad (GIGA)</option>
+                            <option value="simons-cat">Simon's Cat (CAT)</option>
+                        </optgroup>
                     </select>
                 </div>
             </div>
 
-            <div style="margin-top: 14px; padding: 10px; background: rgba(0,0,0,0.25); border-radius: var(--radius-sm); font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between;">
-                <span>Exchange Rate Oracle:</span>
-                <span class="mono" style="color: var(--accent-cyan);" id="liveConversionRate">1 SOL = $158.20 USD</span>
+            <div style="margin-top: 14px; padding: 12px; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm); font-size: 11px; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-glass);">
+                <span>Decentralized Exchange Rate:</span>
+                <span class="mono" style="color: var(--accent-cyan); font-weight: 700;" id="liveConversionRate">1 BTC = $68,420.00 USD</span>
             </div>
         </div>
     </section>
@@ -1112,25 +1322,104 @@
             renderPortfolioVault();
         }
 
-        // 6. Quick Converter
+        // 6. Global Fiat & Comprehensive 100+ Asset Price Matrix
+        const fiatToUsd = {
+            fiat_usd: 1.0,
+            fiat_eur: 1.08,
+            fiat_gbp: 1.31,
+            fiat_jpy: 0.0069,
+            fiat_cad: 0.74,
+            fiat_aud: 0.67,
+            fiat_chf: 1.18,
+            fiat_cny: 0.14,
+            fiat_ngn: 0.000625, // 1 USD ~ 1,600 NGN
+            fiat_inr: 0.012,
+            fiat_brl: 0.18,
+            fiat_aed: 0.272,
+            fiat_sgd: 0.77,
+            fiat_try: 0.029,
+            fiat_zar: 0.057
+        };
+
+        const staticFallbackPrices = {
+            bitcoin: 68420, ethereum: 3560, solana: 158.20, binancecoin: 582.40,
+            'the-open-network': 6.85, ripple: 0.58, cardano: 0.36, 'avalanche-2': 28.50,
+            sui: 1.85, near: 5.20, polkadot: 4.80, chainlink: 12.40, aptos: 9.20,
+            'matic-network': 0.42, tron: 0.16, 'bitcoin-cash': 360, litecoin: 72.50,
+            'internet-computer': 8.90, uniswap: 7.80, cosmos: 4.60, monero: 155.00,
+            kaspa: 0.16, fantom: 0.74, stellar: 0.10, 'hedera-hashgraph': 0.058,
+            filecoin: 3.80, bittensor: 580, 'render-token': 6.20, 'injective-protocol': 21.50,
+            blockstack: 1.80, celestia: 6.40, arbitrum: 0.58, optimism: 1.75,
+            starknet: 0.45, 'sei-network': 0.48, algorand: 0.14, 'quant-network': 78.00,
+            'crypto-com-chain': 0.085, 'immutable-x': 1.45, maker: 1750, aave: 165.00,
+            'lido-dao': 1.25, 'jupiter-exchange-solana': 0.95, raydium: 1.80, pendle: 4.50,
+            ethena: 0.42, 'pyth-network': 0.38, 'worldcoin-wld': 2.10, arweave: 24.50,
+            thorchain: 5.20, 'fetch-ai': 1.45,
+            // Stablecoins
+            tether: 1.00, 'usd-coin': 1.00, dai: 1.00, 'first-digital-usd': 1.00,
+            'ethena-usde': 1.00, 'true-usd': 1.00, usdd: 1.00, 'paypal-usd': 1.00,
+            frax: 1.00, 'tether-gold': 2750.00, 'pax-gold': 2750.00,
+            // Memecoins
+            dogecoin: 0.145, 'shiba-inu': 0.0000185, pepe: 0.0000105, dogwifcoin: 2.65,
+            bonk: 0.000024, floki: 0.00016, brett: 0.11, popcat: 1.45,
+            'book-of-meme': 0.0098, 'cat-in-a-dogs-world': 0.0085, 'neiro-on-eth': 0.00185,
+            'baby-doge-coin': 0.0000000022, 'mog-coin': 0.0000021, turbo: 0.0095,
+            'goatseus-maximus': 0.78, 'dogs-2': 0.00072, notcoin: 0.0084, ponke: 0.48,
+            gigachad: 0.058, 'simons-cat': 0.000038
+        };
+
+        function getAssetUsdRate(assetKey) {
+            if (fiatToUsd[assetKey]) return fiatToUsd[assetKey];
+            if (livePrices[assetKey] && livePrices[assetKey].usd) return livePrices[assetKey].usd;
+            if (staticFallbackPrices[assetKey]) return staticFallbackPrices[assetKey];
+            return 1.0;
+        }
+
+        function swapConverterPairs() {
+            const fromSelect = document.getElementById('convertFromToken');
+            const toSelect = document.getElementById('convertToToken');
+            const temp = fromSelect.value;
+            fromSelect.value = toSelect.value;
+            toSelect.value = temp;
+            calculateConversion();
+        }
+
         function calculateConversion() {
             const amount = parseFloat(document.getElementById('convertAmount').value) || 0;
-            const from = document.getElementById('convertFromToken').value;
-            const to = document.getElementById('convertToToken').value;
+            const fromKey = document.getElementById('convertFromToken').value;
+            const toKey = document.getElementById('convertToToken').value;
 
-            const fromPrice = livePrices[from] ? livePrices[from].usd : 1;
-            let result = 0;
+            const fromUsd = getAssetUsdRate(fromKey);
+            const toUsd = getAssetUsdRate(toKey);
 
-            if (to === 'usd' || to === 'usdt') {
-                result = amount * fromPrice;
-                document.getElementById('convertResult').value = '$' + result.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            const totalUsdValue = amount * fromUsd;
+            const targetAmount = totalUsdValue / (toUsd || 1.0);
+
+            // Format Output
+            let formatted = '';
+            if (toKey.startsWith('fiat_')) {
+                const sym = toKey === 'fiat_eur' ? '€' : toKey === 'fiat_gbp' ? '£' : toKey === 'fiat_ngn' ? '₦' : toKey === 'fiat_jpy' ? '¥' : '$';
+                formatted = sym + targetAmount.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: targetAmount < 1 ? 4 : 2
+                });
+            } else if (targetAmount < 0.0001) {
+                formatted = targetAmount.toFixed(8);
+            } else if (targetAmount < 1) {
+                formatted = targetAmount.toFixed(4);
             } else {
-                const toPrice = livePrices[to] ? livePrices[to].usd : 1;
-                result = (amount * fromPrice) / toPrice;
-                document.getElementById('convertResult').value = result.toFixed(6) + ' ' + to.toUpperCase();
+                formatted = targetAmount.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 4
+                });
             }
 
-            document.getElementById('liveConversionRate').innerText = `1 ${from.toUpperCase()} = $${fromPrice.toLocaleString()} USD`;
+            document.getElementById('convertResult').value = formatted;
+
+            const unitRate = fromUsd / (toUsd || 1.0);
+            const fromLabel = document.getElementById('convertFromToken').selectedOptions[0].text.split('(')[0].trim();
+            const toLabel = document.getElementById('convertToToken').selectedOptions[0].text.split('(')[0].trim();
+            document.getElementById('liveConversionRate').innerText = `1 ${fromLabel} = ${unitRate < 0.01 ? unitRate.toFixed(6) : unitRate.toLocaleString(undefined, {maximumFractionDigits: 4})} ${toLabel}`;
         }
 
         function returnToTelegram() {

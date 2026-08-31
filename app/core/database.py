@@ -63,7 +63,7 @@ async def init_db() -> None:
     except Exception as e:
         logger.warning("primary_database_unavailable_attempting_sqlite_fallback", error=str(e))
         # Fallback to local SQLite database for instant local development
-        fallback_url = "sqlite+aiosqlite:///./coinseer_bot.db"
+        fallback_url = "sqlite+aiosqlite:///./coinseer_enterprise.db"
         engine = _create_engine(fallback_url)
         async_session_factory.configure(bind=engine)
         async with engine.begin() as conn:
